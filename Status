@@ -1,0 +1,130 @@
+
+#include <iostream>
+#include <cstring>
+#include <stdio.h>
+#include <locale.h>
+using namespace std;
+
+class Onibus {
+
+public:
+	
+    int verporta;
+    int vermovimento;
+    bool porta;
+    bool movimento;
+
+    void estado_onibus(bool porta, bool movimento)
+    {
+
+        if (porta == false && movimento == false) {
+
+            cout << "O ônibus está parado e com a porta fechada" << endl;
+        }
+
+        else if (porta == true && movimento == true) {
+
+            cout << "O ônibus não pode entrar em movimento" << endl;
+        }
+
+        else if (porta == false && movimento == true) {
+
+            cout << "O ônibus pode entrar em movimento" << endl;
+        }
+        
+        else{
+        	
+        	cout<<"Estado indefinido"<< endl;
+		}
+    }
+
+    void trocar_estado(bool verporta, bool vermovimento)
+    {
+
+        cout << "Digite o estado da porta, 1 para aberto e 0 para fechado" << endl;
+        cin >> verporta;
+        cout << "Digite o estado do movimento, 1 para aberto e 0 para fechado" << endl;
+        cin >> vermovimento;
+
+        if (verporta == 1 && vermovimento == 0) {
+
+            porta = true;
+            movimento = false;
+            cout<< "Você alterou o estado do ônibus"<<endl;
+        }
+
+        else if (verporta == 1 && vermovimento == 1) {
+
+            porta = true;
+            movimento = true;
+            cout<< "Você alterou o estado do ônibus"<<endl;
+        }
+
+        else if (verporta == 0 && vermovimento == 1) {
+
+            porta = false;
+            movimento = true;
+            cout<< "Você alterou o estado do ônibus"<<endl;
+        }
+
+        else if (verporta == 0 && vermovimento == 0) {
+
+            porta = false;
+            movimento = false;
+            cout<< "Você alterou o estado do ônibus"<<endl;
+        }
+        
+        else{
+        	
+        	cout<<"Alguma coisa deu errado! Tente novamente."<< endl;
+        	
+		}
+    }
+};
+
+int main()
+{
+    setlocale(LC_ALL, "Portuguese");
+    Onibus objeto;
+    objeto.porta;
+    objeto.movimento;
+    objeto.vermovimento;
+    objeto.verporta;
+    int aux;
+
+    while (3) {
+    	
+        cout<<"          Gerenciamento de ônibus"<<endl;
+        cout << "-----------------------------------------" << endl;
+        cout << "1- Consultar estado do onibus" << endl;
+        cout << "2 - Alterar estado do onibus" << endl;
+        cout << "3 - Sair" << endl;
+        cout << "-----------------------------------------" << endl;
+
+        cin >> aux;
+
+        switch (aux) {
+
+        case 1: {
+
+            objeto.estado_onibus(objeto.porta, objeto.movimento);
+
+            break;
+        }
+
+        case 2: {
+
+            objeto.trocar_estado(objeto.vermovimento, objeto.verporta);
+
+            break;
+        }
+        
+        case 3:{
+        	
+        	exit(3);
+        	break;
+		}
+		
+        }
+    }
+}
